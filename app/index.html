@@ -1,0 +1,107 @@
+<html>
+<head>
+	<title> Holocron </title>
+	<script src="wasm_exec.js"></script>
+	<script>
+	    const go = new Go();
+	    let forgeHolocron;
+	    let decryptHolocron;
+	    WebAssembly.instantiateStreaming(fetch("holocron.wasm"), go.importObject)
+	        .then(result => { 
+	        go.run(result.instance);
+	        alert("Holocron is ready");
+		    forgeHolocron = function() {
+		        let result = ForgeHolocron(
+		        	document.getElementById('holocron_name').value, 
+		        	document.getElementById('holocron_gatekeeper').value, 
+		        	document.getElementById('holocron_ascertainment').value,  
+		        	document.getElementById('holocron_treasure').value,  
+		        	document.getElementById('holocron_salt').value
+		        );
+		        if (result.error !== '') {
+		            alert(result.error);
+		        } else {
+		        	console.log(result)
+		            document.getElementById("forged_holocron").src= result.data;
+		        }
+		        return false
+		    };
+		    forgeLiteHolocron = function() {
+		        let result = ForgeLiteHolocron(
+		        	document.getElementById('holocron_name').value, 
+		        	document.getElementById('holocron_gatekeeper').value, 
+		        	document.getElementById('holocron_ascertainment').value,  
+		        	document.getElementById('holocron_treasure').value,  
+		        	document.getElementById('holocron_salt').value
+		        );
+		        if (result.error !== '') {
+		            alert(result.error);
+		        } else {
+		        	console.log(result)
+		            document.getElementById("forged_holocron").src= result.data;
+		        }
+		        return false
+		    };
+		    decryptHolocron = function() {
+		        let result = DecodeHolocron(
+		        	document.getElementById('cypher_ascertainment').value,
+		        	document.getElementById('cypher').value
+		        	, 
+		        );
+		        if (result.error !== '') {
+		            alert(result.error);
+		        } else {
+		        	console.log(result)
+		            document.getElementById("revealed_treasure").innerHTML = result.data;
+		        }
+		        return false
+		    };
+	    });
+	</script>
+</head>
+<body>
+	<h2>Forge a Holocron</h2>
+	<br>
+	<div>
+		<form >
+			<label for="holocron_name">Name:</label><br>
+			<input type="text" id="holocron_name" name="holocron_name" placeholder="Secret to the Universe"><br>
+			<label for="holocron_gatekeeper">Prompt:</label><br>
+			<input type="text" id="holocron_gatekeeper" name="holocron_gatekeeper" placeholder="2 + 2 is?"><br>
+			<label for="holocron_ascertainment">Answer:</label><br>
+			<input type="text" id="holocron_ascertainment" name="holocron_ascertainment" placeholder="4"><br>
+			<label for="holocron_treasure">Treasure:</label><br>
+			<input type="text" id="holocron_treasure" name="holocron_treasure" placeholder="42"><br>
+			<label for="holocron_salt">Salt:</label><br>
+			<input type="text" id="holocron_salt" name="holocron_salt" value="07121994"><br><br>
+			
+			<input type="submit" value="Forge Full" onclick="return forgeHolocron();">
+			<input type="submit" value="Forge Lite" onclick="return forgeLiteHolocron();">
+		</form>
+		<br>
+		<img id="forged_holocron" src="">
+	</div>
+	<br>
+	<br>
+	<h2>Unlock a Holocron</h2>
+	<br>
+	<div>
+		<form onsubmit="return decryptHolocron();">
+			<label for="cypher">Holocron Cypher:</label><br>
+			<input type="text" id="cypher" name="cypher" placeholder="Cypher found when QR code is scanned"><br>
+			<label for="cypher_ascertainment">Passcode:</label><br>
+			<input type="text" id="cypher_ascertainment" name="cypher_ascertainment" placeholder="Must match case exactly"><br><br>
+			
+			<input type="submit" value="Submit">
+		</form>
+		<br>
+		<div id="revealed_treasure">
+		</div>
+	</div>
+</body>
+<script>
+
+
+
+</script>
+</html>

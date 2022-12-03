@@ -1,0 +1,8 @@
+github.com/hoenirvili/skapt v0.0.0-20181026122304-fdaedd932adb h1:xZpnTss1SMKQThx+QO2texhahapca+jhU7ymHnQmoiQ=
+github.com/hoenirvili/skapt v0.0.0-20181026122304-fdaedd932adb/go.mod h1:gFTpaNJsKfVBsIrlF0l4hX2bJb5wBOnVNSGkZTQe48c=
+github.com/nogoegst/balloon v1.0.0 h1:AR+K9ms82FvwTm/7xUHfaW4zfvrwh1XlMl8wY8SQuC4=
+github.com/nogoegst/balloon v1.0.0/go.mod h1:1RAzCsTZJCwHlOLIirlT3PcfUlozAm1RSe9cN4qt3e0=
+github.com/skip2/go-qrcode v0.0.0-20200617195104-da1b6568686e h1:MRM5ITcdelLK2j1vwZ3Je0FKVCfqOLp5zO6trqMLYs0=
+github.com/skip2/go-qrcode v0.0.0-20200617195104-da1b6568686e/go.mod h1:XV66xRDqSt+GTGFMVlhk3ULuV0y9ZmzeVGR4mloJI3M=
+gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 h1:yhCVgyC4o1eVCa2tZl7eS0r+SDo693bJlVdllGtEeKM=
+gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
