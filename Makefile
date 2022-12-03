@@ -23,6 +23,9 @@ all: app
 forge: $(HOLOCRON_OUTDIR)/forge
 	$(HOLOCRON_OUTDIR)/forge -n "$(HOLOCRON_NAME)" -g "$(HOLOCRON_GATEKEEPER)" -a "$(HOLOCRON_ASCERTAINMENT)" -t "$(HOLOCRON_TREASURE)" -s "$(HOLOCRON_SALT)" -o "$(HOLOCRON_OUTDIR)"
 
+pick: $(HOLOCRON_OUTDIR)/pick
+	$(HOLOCRON_OUTDIR)/pick -name=$(KEY_NAME) -seed="$(KEY_SEED)"
+
 wasm:
 	GOOS=js GOARCH=wasm go build -o $(HOLOCRON_APPDIR)/holocron.wasm cmd/wasm/main.go 
 
@@ -31,3 +34,6 @@ app: wasm
 
 $(HOLOCRON_OUTDIR)/forge:
 	go build -o $(HOLOCRON_OUTDIR)/forge cmd/forge/main.go 
+
+$(HOLOCRON_OUTDIR)/pick:
+	go build -o $(HOLOCRON_OUTDIR)/pick cmd/pick/main.go 
