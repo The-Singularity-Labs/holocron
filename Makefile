@@ -1,39 +1,28 @@
-#
-# Holocron
-#
-HOLOCRON_NAME?=
-HOLOCRON_GATEKEEPER?=
-HOLOCRON_TREASURE?=
-HOLOCRON_ASCERTAINMENT?=
-HOLOCRON_SALT?=foobar
-HOLOCRON_OUTDIR?=.build
-HOLOCRON_APPDIR?=app
 
+GO_ROOT := $(shell go env GOROOT)
+TINY_GO_ROOT := $(shell tinygo env TINYGOROOT)
 
-ifeq ($(OS),Windows_NT)
-	uname_S := Windows
-else
-	uname_S := $(shell uname -s)
-endif
+all: run
 
-.PHONY: app
+dev:
+	cd ui && yarn run dev --host 127.0.0.1 --port 41119
 
-all: app
+build: build-wasm build-linux build-windows build-osx
 
-forge: $(HOLOCRON_OUTDIR)/forge
-	$(HOLOCRON_OUTDIR)/forge -n "$(HOLOCRON_NAME)" -g "$(HOLOCRON_GATEKEEPER)" -a "$(HOLOCRON_ASCERTAINMENT)" -t "$(HOLOCRON_TREASURE)" -s "$(HOLOCRON_SALT)" -o "$(HOLOCRON_OUTDIR)"
+build-wasm:
+	mkdir -p ui/src/assets/wasm
+	cp $(TINY_GO_ROOT)/targets/wasm_exec.js ui/src/wasm_exec.js
+	cd lib/wasm && tinygo build -o ../../ui/src/assets/wasm/golib.wasm -target wasm -no-debug  ./main.go
+	cd ui/src/assets/wasm/ && wasm-opt -Oz golib.wasm -o golib.wasm
 
-pick: $(HOLOCRON_OUTDIR)/pick
-	$(HOLOCRON_OUTDIR)/pick -name=$(KEY_NAME) -seed="$(KEY_SEED)"
+app:
+	guark run
 
-wasm:
-	GOOS=js GOARCH=wasm go build -o $(HOLOCRON_APPDIR)/holocron.wasm cmd/wasm/main.go 
+build-linux:
+	guark build  --target linux --rm
 
-app: wasm
-	python -m http.server 8000 --directory app
+build-windows:
+	guark build  --target windows --rm
 
-$(HOLOCRON_OUTDIR)/forge:
-	go build -o $(HOLOCRON_OUTDIR)/forge cmd/forge/main.go 
-
-$(HOLOCRON_OUTDIR)/pick:
-	go build -o $(HOLOCRON_OUTDIR)/pick cmd/pick/main.go 
+build-osx:
+	guark build  --target darwin --rm
