@@ -70,7 +70,7 @@ jobs:
       - name: Archive linux artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: digame-linux-x64
+          name: holocron-linux-x64
           path: dist/linux/
 
       - name: Add i386 Architecture
@@ -96,5 +96,5 @@ jobs:
       - name: Archive Windows artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: digame-windows-x64
+          name: holocron-windows-x64
           path: dist/windows/
