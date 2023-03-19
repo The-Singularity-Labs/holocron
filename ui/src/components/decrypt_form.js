@@ -43,7 +43,7 @@ const DecryptForm = () => ({
                 :disabled="isSubmitable() === false" 
                 :class="decodedMessage === '' ? init_button_class : submitted_button_class", 
                 @click="handleClick()" 
-                x-text="decodedMessage === '' ? 'SIGN' : 'RESET'"
+                x-text="decodedMessage === '' ? 'DECRYPT' : 'RESET'"
                 type="button"
             >
             

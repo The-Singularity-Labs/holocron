@@ -58,7 +58,7 @@ const EncryptForm = () => ({
                 :disabled="isSubmitable() === false" 
                 :class="signedMessage === '' ? init_button_class : submitted_button_class", 
                 @click="handleClick()" 
-                x-text="signedMessage === '' ? 'SIGN' : 'RESET'"
+                x-text="signedMessage === '' ? 'ENCRYPT' : 'RESET'"
                 type="button"
             >
             
