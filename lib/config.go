@@ -5,8 +5,8 @@ import (
 	"github.com/guark/plugins/clipboard"
 	"github.com/guark/plugins/dialog"
 	"github.com/guark/plugins/notify"
-	"github.com/the-singularity-labs/create-guark-alpinejs-app/lib/funcs"
-	"github.com/the-singularity-labs/create-guark-alpinejs-app/lib/hooks"
+	"github.com/the-singularity-labs/holocron/lib/funcs"
+	"github.com/the-singularity-labs/holocron/lib/hooks"
 )
 
 // Exposed functions to guark Javascript api.
