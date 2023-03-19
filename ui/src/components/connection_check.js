@@ -37,7 +37,7 @@ const ConnectionCheck = () => ({
         this.isOnline = await checkIsOnline();
         onlineStatusCallback(this.isOnline);
         if (this.isOnline) {
-            alert("You are online! Please consider disabling your internet connection while using Notary to reduce chance of secret key leakage");
+            alert("You are online! Please consider disabling your internet connection while using Holocron to reduce chance of secret key leakage");
         } else {
             alert("You are offline");
         }

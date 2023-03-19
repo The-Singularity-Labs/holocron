@@ -1,13 +1,14 @@
 # Auto generated (DO NOT EDIT THIS, edit guark-bundle.yaml).
-id: Notary
-name: Notary
+
+id: Holocron
+name: Holocron
 version: v0.1.0
 publisher: Example LTD
 description: Your app description here.
 bundles:
   - type: msi
     source: dist/windows
-    output: dist/Notary.msi
+    output: dist/Holocron.msi
     options:
       guid: d8cb43ce-0225-429c-850e-77debcb0fe99 # put your own windows UpgradeCode UUID here.
       template: app.wxs

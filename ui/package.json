@@ -7,7 +7,7 @@
 		"dev": "parcel src/index.html",
 		"serve": "(sleep 15 && touch guark.lock) & parcel src/index.html",
 		"build": "parcel build --dist-dir $GUARK_BUILD_DIR src/index.html",
-		"package": "parcel build --public-url /Notary/ --dist-dir ../dist src/index.html"
+		"package": "parcel build --public-url /holocron/ --dist-dir ../dist src/index.html"
 	},
 	"dependencies": {
 		"alpinejs": "^3.11.1",
