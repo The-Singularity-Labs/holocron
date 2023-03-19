@@ -1,4 +1,13 @@
-
+#
+# Holocron
+#
+HOLOCRON_NAME?=
+HOLOCRON_GATEKEEPER?=
+HOLOCRON_TREASURE?=
+HOLOCRON_ASCERTAINMENT?=
+HOLOCRON_SALT?=foobar
+HOLOCRON_OUTDIR?=.build
+HOLOCRON_APPDIR?=app
 GO_ROOT := $(shell go env GOROOT)
 TINY_GO_ROOT := $(shell tinygo env TINYGOROOT)
 
@@ -26,3 +35,9 @@ build-windows:
 
 build-osx:
 	guark build  --target darwin --rm
+
+$(HOLOCRON_OUTDIR)/forge:
+	go build -o $(HOLOCRON_OUTDIR)/forge cmd/forge/main.go 
+
+$(HOLOCRON_OUTDIR)/pick:
+	go build -o $(HOLOCRON_OUTDIR)/pick cmd/pick/main.go 

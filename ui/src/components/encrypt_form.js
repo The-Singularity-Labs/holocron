@@ -11,7 +11,7 @@ const EncryptForm = () => ({
     handleClick() { 
         this.isCopied = false;
         if (this.signedMessage === '') {
-            results = Alpine.store('global_funcs').go.encrypt(
+            let results = Alpine.store('global_funcs').go.encrypt(
                 this.name,
                 this.gatekeeper,
                 this.ascertainment,

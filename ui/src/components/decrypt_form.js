@@ -6,7 +6,7 @@ const DecryptForm = () => ({
     handleClick() { 
         this.isCopied = false;
         if (this.decodedMessage === '') {
-            results = Alpine.store('global_funcs').go.decrypt(
+            let results = Alpine.store('global_funcs').go.decrypt(
                 this.ascertainment,
                 this.cypher
                 
