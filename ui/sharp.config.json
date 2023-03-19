@@ -1,0 +1,13 @@
+{
+    "jpeg": {
+      "quality": 75
+    },
+    "webp": {
+      "nearLossless": false,
+      "minSize": true,
+      "mixed": true
+    },
+    "png": {
+      "palette": true
+    }
+}

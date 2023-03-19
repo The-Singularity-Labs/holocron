@@ -2,7 +2,7 @@ package main
 
 import (
 	"os"
-    "github.com/the-singularity-labs/holocron"
+    "github.com/the-singularity-labs/holocron/pkg/forge"
     
 	"github.com/hoenirvili/skapt"
 	"github.com/hoenirvili/skapt/argument"
@@ -22,7 +22,7 @@ func main() {
 			salt := ctx.String("salt")
 			outdir := ctx.String("outdir")
 
-			h := holocron.NewHolocron(name, prompt, ascertainment, treasure, salt)
+			h := forge.NewHolocron(name, prompt, ascertainment, treasure, salt)
 			err := h.Forge(outdir)
 			return err
 		},
