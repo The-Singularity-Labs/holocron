@@ -22,8 +22,9 @@ async function checkIsOnline () {
   
       return true
     } catch (e) {
-        console.log(e)
-      return false
+        console.log("Caught rand failure")
+        console.log(e);
+        return false
     }
 }
 
