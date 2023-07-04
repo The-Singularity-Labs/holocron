@@ -72,29 +72,3 @@ jobs:
         with:
           name: holocron-linux-x64
           path: dist/linux/
-
-      - name: Add i386 Architecture
-        run: sudo dpkg --add-architecture i386
-
-      - name: Add Wine Release Key
-        run: curl -fsSL  https://dl.winehq.org/wine-builds/Release.key | sudo apt-key add -
-
-      - name: Random Wine fix
-        run: sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv F987672F
-      - name: Add Wine Repository
-        run: sudo apt-add-repository https://dl.winehq.org/wine-builds/ubuntu/
-      
-      - name: Apt Update
-        run: sudo apt-get update
-      
-      - name: Install wine
-        run: sudo apt-get install -y --install-recommends winehq-stable winetricks winbind
-
-      - name: Build Windows App
-        run: guark build  --target windows --rm
-
-      - name: Archive Windows artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: holocron-windows-x64
-          path: dist/windows/
