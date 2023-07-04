@@ -51,7 +51,7 @@ const EncryptForm = () => ({
         <form >
             <input type="text" x-model="name" placeholder="Holocron Name">
             <input  type="text" x-model="gatekeeper" placeholder="Prompt (ex. Secret of the Universe?)">
-            <input  type="password" x-model="ascertainment" placeholder="Correct Anser (ex 4)">
+            <input  type="password" x-model="ascertainment" placeholder="Correct Answer (ex 4)">
             <textarea  type="text" x-model="treasure" placeholder="Message to encrypt"></textarea>
             <input  type="text" x-model="salt" placeholder="Salt">
             <button 
